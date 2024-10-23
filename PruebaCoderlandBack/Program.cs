@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen(options =>
     {
         Version = "v1",
         Title = "CoderlandAPI",
-        Description = "Test Service - Web API for managing Automobil",
+        Description = "Test Service - Web API for managing MarcasAutos",
         TermsOfService = new Uri("https://example.com/terms"),
         Contact = new OpenApiContact
         {
@@ -57,6 +57,10 @@ builder.Services.AddSwaggerGen(options =>
             }
     });
 });
+
+builder.Services.AddDbContext<ApiContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnection")
+));
 
 var jwtKey = builder.Configuration["CredentialsJwt:Key"];
 if (string.IsNullOrEmpty(jwtKey))
