@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  pruebacoderlandback:
+    image: ${DOCKER_REGISTRY-}pruebacoderlandback
+    build:
+      context: .
+      dockerfile: PruebaCoderlandBack/Dockerfile
+  postgres-db:
+    image: postgres:latest
+    restart: always
+    container_name: postgressql_db
+    environment:
+        POSTGRES_DB: dbautos
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin1234
+    # volumes:
+    #     - D:/
+    ports:
+        - 5433:5432
