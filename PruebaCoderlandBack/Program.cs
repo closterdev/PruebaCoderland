@@ -65,7 +65,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ICarBrandService, CarBrandService>();
+builder.Services.AddSingleton<ICarBrandService, CarBrandService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddDbContext<ApiContext>(options =>
