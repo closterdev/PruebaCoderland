@@ -5,7 +5,7 @@ namespace PruebaCoderlandBack.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MarcasAutosController : ControllerBase
+    public class BrandCarController : ControllerBase
     {
     }
 }
