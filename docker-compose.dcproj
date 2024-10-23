@@ -7,7 +7,7 @@
     <ProjectGuid>b19ed21e-2587-4a2b-8ed9-018a6abce000</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
-    <DockerServiceName>pruebacoderlandback</DockerServiceName>
+    <DockerServiceName>pruebacoderland</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

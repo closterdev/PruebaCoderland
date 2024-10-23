@@ -5,9 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Domain.Entities;
 using Domain.Ports;
-using Infrastructure.Reposiitory;
+using Infrastructure.Repository;
 using Application.Interfaces;
 using Application.Services;
 
@@ -64,10 +63,11 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICarBrandRepository, CarBrandRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddSingleton<ICarBrandService, CarBrandService>();
+builder.Services.AddScoped<ICarBrandService, CarBrandService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-
+//builder.Services.AddMemoryCache();
 builder.Services.AddDbContext<ApiContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnection")
 ));
@@ -98,11 +98,11 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-app.MapGet("api/brands", async (ApiContext DbContext) =>
-{ 
-    var output = await DbContext.Set<CarBrand>().ToListAsync();
-    return Results.Ok(output);
-});
+//app.MapGet("api/brands", async (ApiContext DbContext) =>
+//{ 
+//    var output = await DbContext.Set<CarBrand>().ToListAsync();
+//    return Results.Ok(output);
+//});
 
 if (!app.Environment.IsProduction())
 {

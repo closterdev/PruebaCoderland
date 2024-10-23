@@ -3,7 +3,7 @@ using Domain.Ports;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Reposiitory;
+namespace Infrastructure.Repository;
 
 public class CarBrandRepository : ICarBrandRepository
 {

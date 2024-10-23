@@ -16,17 +16,30 @@ public class CarBrandService : ICarBrandService
     }
     public async Task<BrandListOut> GetBrandsAsync()
     {
+        BrandListOut output = new();
+
         try
         {
             IEnumerable<CarBrand>? brandList = await _carBrandRepository.GetAllBrandsAsync();
 
-            return brandList.Any()
-                ? new BrandListOut { Message = "No existen registros actualmente.", Result = Result.NoRecords }
-                : new BrandListOut { Message = "Lista generada correctamente.", Result = Result.Success, BrandList = brandList };
+            if (brandList.Any())
+            {
+                output.Message = "No existen registros actualmente.";
+                output.Result = Result.NoRecords;
+            }
+            else
+            {
+                output.Message = "Lista generada correctamente.";
+                output.Result = Result.Success;
+                output.BrandList = brandList;
+            }
         }
         catch (System.Exception ex)
         {
-            return new BrandListOut { Message = $"Ha ocurrido un error. {ex.Message}", Result = Result.Error };
+            output.Message = $"Ha ocurrido un error. {ex.Message}";
+            output.Result = Result.Error;
         }
+
+        return output;
     }
 }

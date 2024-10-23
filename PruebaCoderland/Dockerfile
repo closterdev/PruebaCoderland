@@ -9,17 +9,17 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["PruebaCoderlandBack/PruebaCoderlandBack.csproj", "PruebaCoderlandBack/"]
-RUN dotnet restore "./PruebaCoderlandBack/PruebaCoderlandBack.csproj"
+COPY ["PruebaCoderland/PruebaCoderland.csproj", "PruebaCoderland/"]
+RUN dotnet restore "./PruebaCoderland/PruebaCoderland.csproj"
 COPY . .
-WORKDIR "/src/PruebaCoderlandBack"
-RUN dotnet build "./PruebaCoderlandBack.csproj" -c $BUILD_CONFIGURATION -o /app/build
+WORKDIR "/src/PruebaCoderland"
+RUN dotnet build "./PruebaCoderland.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./PruebaCoderlandBack.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./PruebaCoderland.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "PruebaCoderlandBack.dll"]
+ENTRYPOINT ["dotnet", "PruebaCoderland.dll"]

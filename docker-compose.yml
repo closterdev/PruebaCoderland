@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   pruebacoderlandback:
-    image: ${DOCKER_REGISTRY-}pruebacoderlandback
+    image: ${DOCKER_REGISTRY-}pruebacoderland
     build:
       context: .
-      dockerfile: PruebaCoderlandBack/Dockerfile
+      dockerfile: PruebaCoderland/Dockerfile
   postgres-db:
     image: postgres:latest
     restart: always
