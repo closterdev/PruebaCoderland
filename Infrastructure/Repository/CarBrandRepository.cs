@@ -15,6 +15,6 @@ public class CarBrandRepository : ICarBrandRepository
     }
     public async Task<IEnumerable<CarBrand>> GetAllBrandsAsync()
     {
-        return await _context.CarBrand.ToListAsync();
+        return await _context.CarBrands.ToListAsync();
     }
 }

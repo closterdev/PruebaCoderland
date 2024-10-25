@@ -28,7 +28,7 @@ public class CarBrandServiceTest
         var context = new ApiContext(options);
 
         // Prepopulate the in-memory database with test data
-        context.CarBrand.AddRange(
+        context.CarBrands.AddRange(
             new CarBrand { Id = 1, Name = "Toyota" },
             new CarBrand { Id = 2, Name = "Ford" },
             new CarBrand { Id = 3, Name = "BMW" }

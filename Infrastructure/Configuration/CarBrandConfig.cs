@@ -14,9 +14,9 @@ public class CarBrandConfig : IEntityTypeConfiguration<CarBrand>
             .HasDefaultValue(true);
         builder.HasData(new List<CarBrand>()
         {
-            new () {Name = "Chevrolet", Description = "Es un fabricante de automóviles y camiones con sede en Detroit, Míchigan, Estados Unidos, como una división de General Motors.", BrandId = Guid.NewGuid()},
-            new () {Name = "Mazda", Description = "Es una firma de origen japonés fundada en 1920 y con sede en la ciudad de Hiroshima.", BrandId = Guid.NewGuid()},
-            new () {Name = "Ford", Description = "Es una empresa multinacional fabricante de automóviles de origen estadounidense.", BrandId = Guid.NewGuid()}
+            new () {Id = 1, Name = "Chevrolet", Description = "Es un fabricante de automóviles y camiones con sede en Detroit, Míchigan, Estados Unidos, como una división de General Motors.", BrandId = Guid.NewGuid()},
+            new () {Id = 2, Name = "Mazda", Description = "Es una firma de origen japonés fundada en 1920 y con sede en la ciudad de Hiroshima.", BrandId = Guid.NewGuid()},
+            new () {Id = 3, Name = "Ford", Description = "Es una empresa multinacional fabricante de automóviles de origen estadounidense.", BrandId = Guid.NewGuid()}
         });
     }
 }

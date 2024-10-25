@@ -11,11 +11,5 @@ public class UserConfig : IEntityTypeConfiguration<User>
         builder.ToTable(nameof(User));
         builder.Property(p => p.IsActive)
             .HasDefaultValue(true);
-        builder.HasData(new List<User>()
-        {
-            new () {Username = "admin", Password = "admin"},
-            new () {Username = "developer", Password = "developer"}
-        });
-        throw new NotImplementedException();
     }
 }

@@ -62,15 +62,15 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddDbContext<ApiContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnection"))
+);
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICarBrandRepository, CarBrandRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ICarBrandService, CarBrandService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-//builder.Services.AddMemoryCache();
-builder.Services.AddDbContext<ApiContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DBConnection")
-));
 
 var jwtKey = builder.Configuration["CredentialsJwt:Key"];
 if (string.IsNullOrEmpty(jwtKey))
